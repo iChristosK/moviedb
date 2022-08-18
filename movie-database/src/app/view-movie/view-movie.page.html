@@ -9,14 +9,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" *ngIf="message">
+<ion-content [fullscreen]="true" *ngIf="movie">
   <ion-item>
     <ion-icon name="person-circle" color="primary"></ion-icon>
     <ion-label class="ion-text-wrap">
       <h2>
         {{ movie.name }}
         <span class="date">
-          <ion-note>{{ message.year }}</ion-note>
+          <ion-note>{{ movie.year }}</ion-note>
         </span>
       </h2>
       <h3>To: <ion-note>Me</ion-note></h3>
@@ -24,7 +24,7 @@
   </ion-item>
 
   <div class="ion-padding">
-    <h1>{{ message.actors }}</h1>
+    <h1>{{ movie.actors }}</h1>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim

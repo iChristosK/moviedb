@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 
 import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
-import { MessageComponentModule } from '../message/message.module';
 import { MovieComponentModule } from '../movie/movie.module';
 
 @NgModule({
@@ -14,7 +13,6 @@ import { MovieComponentModule } from '../movie/movie.module';
     FormsModule,
     IonicModule,
     MovieComponentModule,
-    MessageComponentModule,
     HomePageRoutingModule,
   ],
   declarations: [HomePage],

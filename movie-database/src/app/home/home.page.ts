@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataService, Message, Movie } from '../services/data.service';
+import { DataService, Movie } from '../services/data.service';
 
 @Component({
   selector: 'app-home',
@@ -13,10 +13,6 @@ export class HomePage {
     setTimeout(() => {
       ev.detail.complete();
     }, 3000);
-  }
-
-  getMessages(): Message[] {
-    return this.data.getMessages();
   }
 
   getMovies(): Movie[] {
