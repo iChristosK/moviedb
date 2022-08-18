@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService, Movie } from '../services/data.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-view-movie',
@@ -11,6 +12,7 @@ export class ViewMoviePage implements OnInit {
   public movie: Movie;
 
   constructor(
+    private snackBar: MatSnackBar,
     private data: DataService,
     private activatedRoute: ActivatedRoute
   ) {}
@@ -18,6 +20,12 @@ export class ViewMoviePage implements OnInit {
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     this.movie = this.data.getMovieById(parseInt(id, 10));
+  }
+
+  openSnackBar() {
+    this.snackBar.open('hello', '', {
+      duration: 2000,
+    });
   }
 
   getBackButtonText() {
