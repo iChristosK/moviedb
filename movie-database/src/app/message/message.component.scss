@@ -21,8 +21,9 @@ ion-item p {
 }
 
 ion-item .date {
+  margin-left: 10px !important;
   float: right;
-  align-items: center;
+  align-items: right;
   display: flex;
 }
 
