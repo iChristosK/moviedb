@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { StarRatingModule } from 'angular-star-rating';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -17,6 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     IonicModule.forRoot(),
     AppRoutingModule,
     MaterialModule,
+    // Use forRoot to import the StarRatingModule
+    StarRatingModule.forRoot(),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

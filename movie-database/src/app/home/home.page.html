@@ -9,13 +9,13 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large"> Movies </ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <ion-list>
-    <app-movie *ngFor="let movie of getMovies()" [movie]="movie"></app-movie>
+    <app-movie
+      mat-raised-button
+      color="primary"
+      (click)="openDialog()"
+      *ngFor="let movie of getMovies()"
+      [movie]="movie"
+    ></app-movie>
   </ion-list>
 </ion-content>
