@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataService, Message } from '../services/data.service';
+import { DataService, Message, Movie } from '../services/data.service';
 
 @Component({
   selector: 'app-home',
@@ -19,4 +19,7 @@ export class HomePage {
     return this.data.getMessages();
   }
 
+  getMovies(): Movie[] {
+    return this.data.getMovies();
+  }
 }

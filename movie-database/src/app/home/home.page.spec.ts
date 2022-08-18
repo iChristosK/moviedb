@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { MessageComponentModule } from '../message/message.module';
 
 import { HomePage } from './home.page';
+import { MovieComponentModule } from '../movie/movie.module';
 
 describe('HomePage', () => {
   let component: HomePage;
@@ -11,8 +12,12 @@ describe('HomePage', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomePage ],
-      imports: [IonicModule.forRoot(), MessageComponentModule, RouterModule.forRoot([])]
+      declarations: [HomePage],
+      imports: [
+        IonicModule.forRoot(),
+        MovieComponentModule,
+        RouterModule.forRoot([]),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomePage);
