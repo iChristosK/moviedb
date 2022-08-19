@@ -15,18 +15,21 @@
 
     <ion-row>
       <ion-col>
-        <ion-button type="submit" class="btn btn-primary submit-button"
-          >Submit</ion-button
-        >
+        <ion-button (click)="back()" class="button-add-movie">
+          Back
+        </ion-button>
       </ion-col>
       <ion-col>
         <ion-button
+          class="button-add-movie"
           type="button"
-          class="btn btn-default"
           (click)="options.resetModel()"
         >
           Reset
         </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button class="button-add-movie" type="submit">Submit</ion-button>
       </ion-col>
     </ion-row>
   </form>

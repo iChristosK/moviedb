@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { NavController } from '@ionic/angular';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
@@ -8,9 +9,13 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   styleUrls: ['./add-movie.page.scss'],
 })
 export class AddMoviePage implements OnInit {
-  constructor() {}
+  constructor(public navigationController: NavController) {}
 
   ngOnInit() {}
+
+  back() {
+    this.navigationController.back();
+  }
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {
@@ -22,6 +27,7 @@ export class AddMoviePage implements OnInit {
     {
       key: 'name',
       type: 'input',
+      className: 'formname',
       templateOptions: {
         label: 'Movie name',
         placeholder: 'Formly is terrific!',

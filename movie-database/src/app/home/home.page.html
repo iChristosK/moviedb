@@ -1,13 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Movies</ion-title>
+
     <ion-buttons slot="primary">
       <ion-button [routerLink]="['/add-movie']" color="dark">
         <ion-icon slot="icon-only" name="add-circle"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button color="dark" id="popover-button">
+      <ion-button (click)="showSearchBar()" color="dark" id="popover-button">
         <ion-icon slot="icon-only" name="filter-circle"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -18,14 +19,28 @@
   <ng-template>
     <ion-content>
       <ion-list>
-        <ion-item [button]="true" [detail]="false">Filter by actor</ion-item>
-        <ion-item [button]="true" [detail]="false">Filter by name</ion-item>
+        <ion-item (click)="searchType('actor')" [button]="true" [detail]="false"
+          >Filter by actor</ion-item
+        >
+        <ion-item (click)="searchType('name')" [button]="true" [detail]="false"
+          >Filter by name</ion-item
+        >
       </ion-list>
     </ion-content>
   </ng-template>
 </ion-popover>
 
 <ion-content [fullscreen]="true">
+  <ion-searchbar
+    *ngIf="enableSearch"
+    showCancelButton
+    searchIcon="search"
+    animated
+    cancel-button-icon
+    (ionCancel)="hideSearch()"
+    (ionChange)="search($event.target.value)"
+    placeholder="Search movies by {{type}}"
+  ></ion-searchbar>
   <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -35,7 +50,7 @@
       mat-raised-button
       color="primary"
       (click)="openDialog()"
-      *ngFor="let movie of getMovies()"
+      *ngFor="let movie of filteredMovies"
       [movie]="movie"
     ></app-movie>
   </ion-list>
