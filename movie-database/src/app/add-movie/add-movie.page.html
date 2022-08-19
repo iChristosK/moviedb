@@ -4,4 +4,30 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+    <formly-form
+      [model]="model"
+      [fields]="fields"
+      [options]="options"
+      [form]="form"
+    ></formly-form>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" class="btn btn-primary submit-button"
+          >Submit</ion-button
+        >
+      </ion-col>
+      <ion-col>
+        <ion-button
+          type="button"
+          class="btn btn-default"
+          (click)="options.resetModel()"
+        >
+          Reset
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

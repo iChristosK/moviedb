@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'app-add-movie',
@@ -6,10 +8,56 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-movie.page.scss'],
 })
 export class AddMoviePage implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
+  form = new FormGroup({});
+  model: any = {};
+  options: FormlyFormOptions = {
+    formState: {
+      awesomeIsForced: false,
+    },
+  };
+  fields: FormlyFieldConfig[] = [
+    {
+      key: 'name',
+      type: 'input',
+      templateOptions: {
+        label: 'Movie name',
+        placeholder: 'Formly is terrific!',
+        required: true,
+      },
+    },
+    {
+      key: 'year',
+      type: 'input',
+      templateOptions: {
+        label: 'Release Year',
+        placeholder: 'Formly is terrific!',
+        required: true,
+      },
+    },
+    {
+      key: 'actor',
+      type: 'native-select',
+      templateOptions: {
+        label: 'Select Actor',
+        placeholder: 'Actor',
 
-  ngOnInit() {
+        required: true,
+        options: [
+          { value: 1, label: 'Option 1' },
+          { value: 2, label: 'Option 2' },
+          { value: 3, label: 'Option 3' },
+          { value: 4, label: 'Option 4' },
+        ],
+      },
+    },
+  ];
+
+  submit() {
+    if (this.form.valid) {
+      alert(JSON.stringify(this.model));
+    }
   }
-
 }
