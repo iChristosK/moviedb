@@ -1,8 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Movies </ion-title>
+    <ion-title>Movies</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button [routerLink]="['/add-movie']" color="dark">
+        <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="dark" id="popover-button">
+        <ion-icon slot="icon-only" name="filter-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
+<ion-popover trigger="popover-button" [dismissOnSelect]="true">
+  <ng-template>
+    <ion-content>
+      <ion-list>
+        <ion-item [button]="true" [detail]="false">Filter by actor</ion-item>
+        <ion-item [button]="true" [detail]="false">Filter by name</ion-item>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-popover>
 
 <ion-content [fullscreen]="true">
   <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">

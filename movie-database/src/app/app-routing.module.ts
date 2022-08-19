@@ -7,17 +7,15 @@ const routes: Routes = [
     loadChildren: () =>
       import('./home/home.module').then((m) => m.HomePageModule),
   },
-  // {
-  //   path: 'movie/:id',
-  //   loadChildren: () =>
-  //     import('./view-movie/view-movie.module').then(
-  //       (m) => m.ViewMoviePageModule
-  //     ),
-  // },
   {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
+  },
+  {
+    path: 'add-movie',
+    loadChildren: () =>
+      import('./add-movie/add-movie.module').then((m) => m.AddMoviePageModule),
   },
 ];
 

@@ -9,7 +9,7 @@ ion-label {
 }
 
 ion-item h2 {
-  color: var(--ion-color-danger);
+  color: var(--ion-color-tertiary);
   font-weight: 600;
   margin: 0;
   margin-left: 15px;
@@ -20,18 +20,23 @@ ion-item h2 {
   vertical-align: middle;
 }
 
+.actor {
+  display: inline-block;
+  margin-top: 5px;
+}
+
 .star {
   display: inline-block;
-  margin-top: 7px;
+  margin-top: 0px;
   margin-left: 5px;
   vertical-align: middle;
-  color: #ff9100;
+  color: var(--ion-color-tertiary);
 }
 
 .rate {
   font-size: 15px;
-  margin-top: 15px;
+  margin-top: 5px;
   display: inline-block;
   vertical-align: middle;
-  color: #ff9100;
+  color: var(--ion-color-tertiary);
 }
