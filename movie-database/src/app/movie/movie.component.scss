@@ -9,43 +9,29 @@ ion-label {
 }
 
 ion-item h2 {
+  color: var(--ion-color-danger);
   font-weight: 600;
   margin: 0;
   margin-left: 15px;
 }
 
-ion-item p {
-  margin-left: 15px;
-  display: block;
-  width: 95%;
+.year {
+  display: inline-block;
+  vertical-align: middle;
 }
 
-ion-item .year {
-  color: var(--ion-color-primary);
-
-  display: flex;
+.star {
+  display: inline-block;
+  margin-top: 7px;
+  margin-left: 5px;
+  vertical-align: middle;
+  color: #ff9100;
 }
 
-ion-item .star {
-  margin-left: 3px;
-  color: var(--ion-color-tertiary);
-}
-ion-item .rate {
-  color: var(--ion-color-tertiary);
-  display: flex;
-}
-
-ion-item ion-note {
+.rate {
   font-size: 15px;
-  margin-right: 8px;
-  font-weight: normal;
-}
-
-ion-item ion-note.md {
-  margin-right: 14px;
-}
-
-ion-footer ion-title {
-  font-size: 11px;
-  font-weight: bold;
+  margin-top: 15px;
+  display: inline-block;
+  vertical-align: middle;
+  color: #ff9100;
 }
