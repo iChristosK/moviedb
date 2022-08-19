@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-add-movie',
@@ -9,7 +10,11 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   styleUrls: ['./add-movie.page.scss'],
 })
 export class AddMoviePage implements OnInit {
-  constructor(public navigationController: NavController) {}
+  constructor(
+    private data: DataService,
+    public navigationController: NavController,
+    public toastController: ToastController
+  ) {}
 
   ngOnInit() {}
 
@@ -27,10 +32,9 @@ export class AddMoviePage implements OnInit {
     {
       key: 'name',
       type: 'input',
-      className: 'formname',
       templateOptions: {
         label: 'Movie name',
-        placeholder: 'Formly is terrific!',
+        placeholder: 'Input movie name',
         required: true,
       },
     },
@@ -39,7 +43,7 @@ export class AddMoviePage implements OnInit {
       type: 'input',
       templateOptions: {
         label: 'Release Year',
-        placeholder: 'Formly is terrific!',
+        placeholder: 'Input release year',
         required: true,
       },
     },
@@ -47,23 +51,43 @@ export class AddMoviePage implements OnInit {
       key: 'actor',
       type: 'native-select',
       templateOptions: {
-        label: 'Select Actor',
-        placeholder: 'Actor',
+        label: 'Select Actor/Actress',
+        placeholder: 'Actor/Actress',
 
         required: true,
         options: [
-          { value: 1, label: 'Option 1' },
-          { value: 2, label: 'Option 2' },
-          { value: 3, label: 'Option 3' },
-          { value: 4, label: 'Option 4' },
+          { value: 'Angelina Jolie', label: 'Angelina Jolie' },
+          { value: 'Brad Pitt', label: 'Brad Pitt' },
+          { value: 'Jennifer Lawrence', label: 'Jennifer Lawrence' },
+          { value: 'Leonardo DiCaprio', label: 'Leonardo DiCaprio' },
         ],
       },
     },
   ];
 
+  async presentToast(name: string) {
+    const toast = await this.toastController.create({
+      message: 'New movie ' + name + ' has been added.',
+      color: 'dark',
+      animated: true,
+      duration: 3500,
+    });
+    toast.present();
+  }
+
   submit() {
     if (this.form.valid) {
-      alert(JSON.stringify(this.model));
+      var name = this.model['name'];
+      var year = this.model['year'];
+      var actor = this.model['actor'];
+      this.presentToast(name);
+
+      this.data.movies.push({
+        name: name,
+        year: year,
+        actor: actor,
+        rate: 9,
+      });
     }
   }
 }

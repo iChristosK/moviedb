@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Add new movie</ion-title>
+    <ion-title>New movie</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,12 +15,13 @@
 
     <ion-row>
       <ion-col>
-        <ion-button (click)="back()" class="button-add-movie">
+        <ion-button color="dark" (click)="back()" class="button-add-movie">
           Back
         </ion-button>
       </ion-col>
       <ion-col>
         <ion-button
+          color="medium"
           class="button-add-movie"
           type="button"
           (click)="options.resetModel()"
