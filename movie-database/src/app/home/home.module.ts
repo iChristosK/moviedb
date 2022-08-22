@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
-import { MovieComponentModule } from '../movie/movie.module';
+import { MovieComponentModule } from '../components/movie/movie.module';
 
 @NgModule({
   imports: [

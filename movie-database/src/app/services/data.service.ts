@@ -1,11 +1,5 @@
 import { Injectable } from '@angular/core';
-
-export interface Movie {
-  name: string;
-  year: number;
-  actor: string;
-  rate: number;
-}
+import { Movie } from '../models/movie';
 
 @Injectable({
   providedIn: 'root',

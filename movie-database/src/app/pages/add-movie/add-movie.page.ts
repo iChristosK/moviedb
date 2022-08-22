@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { NavController, ToastController } from '@ionic/angular';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
-import { DataService } from '../services/data.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-add-movie',

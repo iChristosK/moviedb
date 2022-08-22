@@ -6,7 +6,8 @@ import {
   ToastController,
 } from '@ionic/angular';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
-import { DataService, Movie } from '../services/data.service';
+import { Movie } from '../models/movie';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-modal',

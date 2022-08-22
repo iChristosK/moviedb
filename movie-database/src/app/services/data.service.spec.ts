@@ -8,13 +8,15 @@ describe('DataService', () => {
 
   beforeEach(() => {
     dataServiceSpy = jasmine.createSpyObj('DataService', {
-      federalIncomeTax: 0,
-      stateIncomeTax: 0,
-      socialSecurity: 0,
-      medicare: 0,
+      movies: [],
     });
     service = new DataService();
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [
+        DataService,
+        { provide: DataService, useValue: dataServiceSpy },
+      ],
+    });
   });
 
   describe('net pay calculations', () => {});

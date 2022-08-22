@@ -15,11 +15,14 @@ const routes: Routes = [
   {
     path: 'add-movie',
     loadChildren: () =>
-      import('./add-movie/add-movie.module').then((m) => m.AddMoviePageModule),
+      import('./pages/add-movie/add-movie.module').then(
+        (m) => m.AddMoviePageModule
+      ),
   },
   {
     path: 'modal',
-    loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
+    loadChildren: () =>
+      import('./modal/modal.module').then((m) => m.ModalPageModule),
   },
 ];
 

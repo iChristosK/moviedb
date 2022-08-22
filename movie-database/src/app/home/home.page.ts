@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { DataService, Movie } from '../services/data.service';
+import { DataService } from '../services/data.service';
 import { ModalController, NavController } from '@ionic/angular';
 import { ModalPage } from '../modal/modal.page';
+import { Movie } from '../models/movie';
 
 @Component({
   selector: 'app-home',
