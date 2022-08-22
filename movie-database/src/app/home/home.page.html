@@ -48,8 +48,9 @@
   <ion-list>
     <app-movie
       mat-raised-button
+      expand="block"
       color="primary"
-      (click)="openDialog()"
+      (click)="presentModal()"
       *ngFor="let movie of filteredMovies"
       [movie]="movie"
     ></app-movie>

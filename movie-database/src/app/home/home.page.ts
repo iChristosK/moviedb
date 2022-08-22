@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService, Movie } from '../services/data.service';
-import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '../dialog/dialog.component';
-import { NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
+import { ModalPage } from '../modal/modal.page';
 
 @Component({
   selector: 'app-home',
@@ -12,19 +11,27 @@ import { NavController } from '@ionic/angular';
 export class HomePage {
   constructor(
     private data: DataService,
-    public dialog: MatDialog,
+    public modalController: ModalController,
     public navCtrl: NavController
   ) {
     this.filteredMovies = this.getMovies();
   }
-  getMovies(): Movie[] {
-    return this.data.getMovies();
-  }
-
   enableSearch: boolean = false;
   type: string = 'actor';
   searchTerm: string;
   filteredMovies: Movie[] = [];
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: ModalPage,
+      cssClass: 'my-custom-class',
+    });
+    return await modal.present();
+  }
+
+  getMovies(): Movie[] {
+    return this.data.getMovies();
+  }
 
   refresh(event) {
     setTimeout(() => {
@@ -60,12 +67,5 @@ export class HomePage {
   }
   hideSearch() {
     this.enableSearch = false;
-  }
-
-  openDialog() {
-    const dialogRef = this.dialog.open(DialogComponent);
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 }

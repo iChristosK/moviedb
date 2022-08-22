@@ -17,6 +17,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./add-movie/add-movie.module').then((m) => m.AddMoviePageModule),
   },
+  {
+    path: 'modal',
+    loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
+  },
 ];
 
 @NgModule({
