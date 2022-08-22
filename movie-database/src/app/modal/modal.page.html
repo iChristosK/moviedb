@@ -4,4 +4,31 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content class="ion-padding">
+  <form class="form-rating" [formGroup]="form" (ngSubmit)="submit()">
+    <formly-form
+      [model]="model"
+      [fields]="fields"
+      [options]="options"
+      [form]="form"
+    ></formly-form>
+
+    <ion-row>
+      <ion-col>
+        <ion-button
+          color="medium"
+          class="modal-rate-movie"
+          type="button"
+          (click)="options.resetModel()"
+        >
+          Cancel
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="tertiary" class="modal-rate-movie" type="submit"
+          >Submit</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

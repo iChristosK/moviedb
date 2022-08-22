@@ -21,11 +21,15 @@ export class HomePage {
   searchTerm: string;
   filteredMovies: Movie[] = [];
 
-  async presentModal() {
+  async presentModal(movie: Movie, movieIndex: number) {
     const modal = await this.modalController.create({
       component: ModalPage,
-      cssClass: 'my-custom-class',
+      componentProps: {
+        movie: movie,
+        movieIndex: movieIndex,
+      },
     });
+
     return await modal.present();
   }
 

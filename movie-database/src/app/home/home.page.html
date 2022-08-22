@@ -50,8 +50,8 @@
       mat-raised-button
       expand="block"
       color="primary"
-      (click)="presentModal()"
-      *ngFor="let movie of filteredMovies"
+      *ngFor="let movie of filteredMovies;let movieIndex = index "
+      (click)="presentModal(movie,movieIndex)"
       [movie]="movie"
     ></app-movie>
   </ion-list>
