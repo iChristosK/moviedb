@@ -6,9 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dialog.component.scss'],
 })
 export class DialogComponent implements OnInit {
-
-  constructor() { }
+  stars = 0;
+  constructor() {}
 
   ngOnInit() {}
-
 }
