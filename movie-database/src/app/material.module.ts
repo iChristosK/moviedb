@@ -5,14 +5,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    MatSnackBarModule,
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
@@ -22,7 +20,6 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
   exports: [
     CommonModule,
-    MatSnackBarModule,
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,

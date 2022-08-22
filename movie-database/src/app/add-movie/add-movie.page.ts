@@ -42,6 +42,7 @@ export class AddMoviePage implements OnInit {
       key: 'year',
       type: 'input',
       templateOptions: {
+        type: 'number',
         label: 'Release Year',
         placeholder: 'Input release year',
         required: true,
