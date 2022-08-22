@@ -63,6 +63,27 @@ export class AddMoviePage implements OnInit {
         ],
       },
     },
+    {
+      key: 'rating',
+      type: 'native-select',
+      templateOptions: {
+        label: 'Rating',
+        placeholder: 'Please rate movie from 1-10 stars',
+        required: true,
+        options: [
+          { value: 1, label: 1 },
+          { value: 2, label: 2 },
+          { value: 3, label: 3 },
+          { value: 4, label: 4 },
+          { value: 5, label: 5 },
+          { value: 6, label: 6 },
+          { value: 7, label: 7 },
+          { value: 8, label: 8 },
+          { value: 9, label: 9 },
+          { value: 10, label: 10 },
+        ],
+      },
+    },
   ];
 
   async presentToast(name: string) {
@@ -80,14 +101,15 @@ export class AddMoviePage implements OnInit {
       var name = this.model['name'];
       var year = this.model['year'];
       var actor = this.model['actor'];
-      this.presentToast(name);
+      var rate = this.model['rating'];
 
       this.data.movies.push({
         name: name,
         year: year,
         actor: actor,
-        rate: 9,
+        rate: rate,
       });
+      this.presentToast(name);
     }
   }
 }

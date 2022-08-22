@@ -51,11 +51,11 @@ export class HomePage {
       // filter array by query
       if (this.type == 'actor') {
         this.filteredMovies = this.data.getMovies().filter((movie) => {
-          return movie.actor.includes(query);
+          return movie.actor.toLowerCase().indexOf(query.toLowerCase()) > -1;
         });
       } else {
         this.filteredMovies = this.data.getMovies().filter((movie) => {
-          return movie.name.includes(query);
+          return movie.name.toLowerCase().indexOf(query.toLowerCase()) > -1;
         });
       }
     }

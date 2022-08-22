@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <h2 class="header-rating">Please rate movie from 1-10 stars</h2>
   <form class="form-rating" [formGroup]="form" (ngSubmit)="submit()">
     <formly-form
       [model]="model"
@@ -19,7 +20,7 @@
           color="medium"
           class="modal-rate-movie"
           type="button"
-          (click)="options.resetModel()"
+          (click)="closeModal()"
         >
           Cancel
         </ion-button>

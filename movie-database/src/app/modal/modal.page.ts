@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { NavController, ToastController } from '@ionic/angular';
+import {
+  ModalController,
+  NavController,
+  ToastController,
+} from '@ionic/angular';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { DataService, Movie } from '../services/data.service';
 
@@ -16,16 +20,22 @@ export class ModalPage implements OnInit {
   constructor(
     private data: DataService,
     public navigationController: NavController,
-    public toastController: ToastController
-  ) {}
+    public toastController: ToastController,
+    public modalController: ModalController
+  ) {
+    this.movie;
+  }
 
   ngOnInit() {
-    console.log(this.movie, this.movieIndex);
+    this.fields[0].defaultValue = this.movie.rate;
   }
 
-  back() {
-    this.navigationController.back();
+  closeModal() {
+    this.modalController.dismiss();
   }
+
+  createForm() {}
+
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {
@@ -40,7 +50,6 @@ export class ModalPage implements OnInit {
       templateOptions: {
         label: 'Rating',
         placeholder: 'Please rate movie from 1-10 stars',
-
         required: true,
         options: [
           { value: 1, label: 1 },
@@ -60,7 +69,7 @@ export class ModalPage implements OnInit {
 
   async presentToast(name: string) {
     const toast = await this.toastController.create({
-      message: 'New movie ' + name + ' has been added.',
+      message: 'Movie ' + name + ' has been successfully rated.',
       color: 'dark',
       animated: true,
       duration: 3500,
@@ -68,19 +77,24 @@ export class ModalPage implements OnInit {
     toast.present();
   }
 
+  overwriteModel(movie: Movie, newRating: number) {
+    console.log(movie, 'movie');
+    let index = this.data.movies.findIndex((m) => m.name === movie.name);
+    if (index !== -1) {
+      this.data.getMovies()[index] = {
+        name: movie.name,
+        year: movie.year,
+        actor: movie.actor,
+        rate: newRating,
+      };
+    }
+  }
+
   submit() {
     if (this.form.valid) {
-      var name = this.model['name'];
-      var year = this.model['year'];
-      var actor = this.model['actor'];
-      this.presentToast(name);
-
-      this.data.movies.push({
-        name: name,
-        year: year,
-        actor: actor,
-        rate: 9,
-      });
+      this.overwriteModel(this.movie, this.model['rating']);
+      this.presentToast(this.movie.name);
+      this.closeModal();
     }
   }
 }
