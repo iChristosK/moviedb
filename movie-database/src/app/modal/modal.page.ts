@@ -28,7 +28,9 @@ export class ModalPage implements OnInit {
   }
 
   ngOnInit() {
-    this.fields[0].defaultValue = this.movie.rate;
+    if (this.movie) {
+      this.fields[0].defaultValue = this.movie.rate;
+    }
   }
 
   closeModal() {
