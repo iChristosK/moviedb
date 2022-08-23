@@ -12,6 +12,7 @@ describe('DataService', () => {
   const DataServiceStud = {
     addMovie: () => null,
     getMovies: () => [],
+    overwriteRating: () => [],
   };
 
   beforeEach(() => {
@@ -123,5 +124,74 @@ describe('DataService', () => {
     // using toHaveBeenCalled and toHaveBeenCalledWith to check if the Spied function 'addMovie' was called.
     expect(dataService.addMovie).toHaveBeenCalled();
     expect(dataService.addMovie).toHaveBeenCalledWith(movie);
+  });
+
+  it('overwriteRating should have called the service overwriteRating function', () => {
+    const movie = {
+      name: 'Nope',
+      year: 2022,
+      actor: 'Daniel Kaluuya',
+      rate: 8,
+    };
+
+    const movies = [
+      {
+        name: 'Nope',
+        year: 2022,
+        actor: 'Daniel Kaluuya',
+        rate: 8,
+      },
+      {
+        name: 'Inception',
+        year: 2013,
+        actor: 'Leonardo Dicaprio',
+        rate: 9,
+      },
+    ];
+
+    // spy is capturing the call to function.
+    spyOn(dataService, 'overwriteRating');
+    dataService.overwriteRating(movie, movies, 9);
+
+    // using toHaveBeenCalled and toHaveBeenCalledWith to check if the Spied function 'addMovie' was called.
+    expect(dataService.overwriteRating).toHaveBeenCalled();
+    expect(dataService.overwriteRating).toHaveBeenCalledWith(movie, movies, 9);
+  });
+
+  it('overwriteRating should overwrite movie into movie array and contain new rating inside the movies array', () => {
+    const service: DataService = TestBed.get(DataService);
+
+    const movie = {
+      name: 'Nope',
+      year: 2022,
+      actor: 'Daniel Kaluuya',
+      rate: 8,
+    };
+
+    const newMovie = {
+      name: 'Nope',
+      year: 2022,
+      actor: 'Daniel Kaluuya',
+      rate: 9,
+    };
+
+    const movies = [
+      {
+        name: 'Nope',
+        year: 2022,
+        actor: 'Daniel Kaluuya',
+        rate: 8,
+      },
+      {
+        name: 'Inception',
+        year: 2013,
+        actor: 'Leonardo Dicaprio',
+        rate: 9,
+      },
+    ];
+
+    fixture.detectChanges();
+    service.overwriteRating(movie, movies, 9);
+    expect(movies).toContain(newMovie);
   });
 });
