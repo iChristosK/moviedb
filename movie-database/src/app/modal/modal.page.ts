@@ -68,33 +68,14 @@ export class ModalPage implements OnInit {
     this.modalController.dismiss();
   }
 
-  async presentToast(name: string) {
-    const toast = await this.toastController.create({
-      message: 'Movie ' + name + ' has been successfully rated.',
-      color: 'dark',
-      animated: true,
-      duration: 3500,
-    });
-    toast.present();
-  }
-
-  overwriteModel(movie: Movie, newRating: number) {
-    console.log(movie, 'movie');
-    let index = this.data.movies.findIndex((m) => m.name === movie.name);
-    if (index !== -1) {
-      this.data.getMovies()[index] = {
-        name: movie.name,
-        year: movie.year,
-        actor: movie.actor,
-        rate: newRating,
-      };
-    }
-  }
-
   submit() {
     if (this.form.valid) {
-      this.overwriteModel(this.movie, this.model['rating']);
-      this.presentToast(this.movie.name);
+      this.data.overwriteRating(
+        this.movie,
+        this.data.movies,
+        this.model['rating']
+      );
+      this.data.presentToastRatedMovie(this.movie.name);
       this.closeModal();
     }
   }

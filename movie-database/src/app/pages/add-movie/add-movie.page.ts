@@ -99,18 +99,13 @@ export class AddMoviePage implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      var name = this.model['name'];
-      var year = this.model['year'];
-      var actor = this.model['actor'];
-      var rate = this.model['rating'];
-
-      this.data.movies.push({
-        name: name,
-        year: year,
-        actor: actor,
-        rate: rate,
-      });
-      this.presentToast(name);
+      const movie = {
+        name: this.model['name'],
+        year: this.model['year'],
+        actor: this.model['actor'],
+        rate: this.model['rating'],
+      };
+      this.data.addMovie(movie);
     }
   }
 }
