@@ -18,27 +18,6 @@ export class ModalPage implements OnInit {
   @Input() movie: Movie;
   @Input() movieIndex: number;
 
-  constructor(
-    private data: DataService,
-    public navigationController: NavController,
-    public toastController: ToastController,
-    public modalController: ModalController
-  ) {
-    this.movie;
-  }
-
-  ngOnInit() {
-    if (this.movie) {
-      this.fields[0].defaultValue = this.movie.rate;
-    }
-  }
-
-  closeModal() {
-    this.modalController.dismiss();
-  }
-
-  createForm() {}
-
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {
@@ -69,6 +48,25 @@ export class ModalPage implements OnInit {
       },
     },
   ];
+
+  constructor(
+    private data: DataService,
+    public navigationController: NavController,
+    public toastController: ToastController,
+    public modalController: ModalController
+  ) {
+    this.movie;
+  }
+
+  ngOnInit() {
+    if (this.movie) {
+      this.fields[0].defaultValue = this.movie.rate;
+    }
+  }
+
+  closeModal() {
+    this.modalController.dismiss();
+  }
 
   async presentToast(name: string) {
     const toast = await this.toastController.create({

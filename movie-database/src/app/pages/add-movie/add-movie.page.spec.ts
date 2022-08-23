@@ -9,8 +9,8 @@ describe('AddMoviePage', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddMoviePage ],
-      imports: [IonicModule.forRoot()]
+      declarations: [AddMoviePage],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AddMoviePage);

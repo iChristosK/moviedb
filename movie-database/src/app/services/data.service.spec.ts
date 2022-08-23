@@ -19,10 +19,21 @@ describe('DataService', () => {
     });
   });
 
-  describe('net pay calculations', () => {});
-
   it('should be created', () => {
     const service: DataService = TestBed.get(DataService);
     expect(service).toBeTruthy();
+  });
+
+  // *ADD MOVIE INTO ARRAY SPEC
+  // it('addJob should add the job string to jobs array', () => {
+  //   const job = 'Dummy Job';
+  //   component.addJob(job); // action part
+  //   expect(component.jobs.length).toBeGreaterThan(0);
+  //   expect(component.jobs).toContain(job);
+  // });
+
+  it('movies length should be equal to 0', () => {
+    const service: DataService = TestBed.get(DataService);
+    expect(service.movies.length).toEqual(0);
   });
 });

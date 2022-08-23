@@ -44,7 +44,7 @@ export class DataService {
     return this.movies;
   }
 
-  public getMovieById(id: number): Movie {
-    return this.movies[id];
+  public getMovieByName(name: string): Movie {
+    return this.movies[name];
   }
 }
